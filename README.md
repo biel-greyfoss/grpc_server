@@ -1,1 +1,1 @@
-# grpc_server
+# grpc_python
