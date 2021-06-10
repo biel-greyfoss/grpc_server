@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: grpc_server
+  name: grpc-server
 spec:
   type: ClusterIP
   ports:
@@ -9,21 +9,21 @@ spec:
       port: 50051
       targetPort: 50051
   selector:
-    app: grpc_server
+    app: grpc-server
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: grpc_server
+  name: grpc-server
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: grpc_server
+      app: grpc-server
   template:
     metadata:
       labels:
-        app: grpc_server
+        app: grpc-server
     spec:
       containers:
         - name: grpc_server
