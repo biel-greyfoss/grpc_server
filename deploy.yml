@@ -26,7 +26,7 @@ spec:
         app: grpc-server
     spec:
       containers:
-        - name: grpc_server
+        - name: grpc-server
           image: 1148541663/grpc_server:latest
           imagePullPolicy: Always
           tty: true
