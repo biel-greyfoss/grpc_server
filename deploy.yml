@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grpc_server
+spec:
+  type: ClusterIP
+  ports:
+    - name: grpc
+      port: 50051
+      targetPort: 50051
+  selector:
+    app: grpc_server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc_server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: grpc_server
+  template:
+    metadata:
+      labels:
+        app: grpc_server
+    spec:
+      containers:
+        - name: grpc_server
+          image: 1148541663/grpc_server:latest
+          imagePullPolicy: Always
+          tty: true
+          ports:
+            - name: grpc
+              protocol: TCP
+              containerPort: 50051
+
